@@ -24,7 +24,7 @@ export default async function(req, res, next) {
             session = await generateTokenFromHost(host);
             await res.cookie(COOKIE_NAME, session, {
                 sameSite: "none",
-                secure: true
+                secure: false
             });
             req.db = hostToConnection(host)
         }

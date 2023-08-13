@@ -21,7 +21,6 @@ app.use(cookieParser());
 app.use(cors({
   origin:  [
     process.env.REACT_SERVER_HOST,
-    `localhost:${process.env.REACT_SERVER_PORT}`
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

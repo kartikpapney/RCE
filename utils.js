@@ -1,8 +1,10 @@
 import redis from './db/redis.js'
-import {FREE_HOSTS, SESSIONS, CONNECTION_EXPIRATION} from './constant.js';
+import {FREE_HOSTS, SESSIONS} from './constant.js';
 import jwt from 'jsonwebtoken'
 import {hostToConnection} from './db/mysql.js';
-
+import dotenv from 'dotenv';
+dotenv.config();
+const CONNECTION_EXPIRATION = process.env.CONNECTION_EXPIRATION;
 const generateTokenFromHost = async function(host) {
     return jwt.sign({
         'host': host,

@@ -1,10 +1,10 @@
 import * as redis from 'redis';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 let redisClient = redis.createClient({
-    socket: {
-      port: process.env.REDIS_PORT,
-      host: process.env.REDIS_HOST,
-    },
+    url: `redis://${process.env.REDIS_USER}:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`
   });
 
 redisClient.on("connected", (data)=> console.log ("Redis connected"))

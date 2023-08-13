@@ -1,5 +1,8 @@
 **/node_modules*
 **/package-lock.json*
 **/.env*
+**/production.env*
+**/dev.env*
+**/.dev*
 **/.vscode*
 **/.db*

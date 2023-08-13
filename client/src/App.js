@@ -15,7 +15,8 @@ function App() {
       console.log({BASE_URL});
       const instance = axios.create({
           withCredentials: true,
-          baseURL: BASE_URL
+          baseURL: BASE_URL,
+          'Content-Type': 'application/json'
       })
       const response = await instance.post('/', { query });
       setResult(JSON.stringify(response.data.res, null, 2));

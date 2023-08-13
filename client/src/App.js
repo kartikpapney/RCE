@@ -11,7 +11,7 @@ function App() {
 
   const executeQuery = async () => {
     try {
-      const BASE_URL = `http://${process.env.REACT_APP_NODE_SERVER_HOST}:${ process.env.REACT_APP_NODE_SERVER_PORT}/`
+      const BASE_URL = `https://${process.env.REACT_APP_NODE_SERVER_HOST}/`
       console.log({BASE_URL});
       const instance = axios.create({
           withCredentials: true,

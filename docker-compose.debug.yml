@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  rce:
+    image: rce
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 5032:5032
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "app.js"]
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - cache:/data

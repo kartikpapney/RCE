@@ -1,0 +1,101 @@
+version: '3'
+services:
+  rce:
+    restart: always
+    build: .
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      REDIS_HOST: ${REDIS_HOST}
+      NODE_ENV: ${NODE_ENV}
+      ENVIRONMENT: ${ENVIRONMENT}
+      NODE_SERVER_IP: ${NODE_SERVER_IP}
+      REDIS_PORT: ${REDIS_PORT}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST1: ${MYSQL_HOST1}
+      MYSQL_HOST2: ${MYSQL_HOST2}
+      MYSQL_HOST3: ${MYSQL_HOST3}
+      MYSQL_HOST4: ${MYSQL_HOST4}
+      JWT_SECRET: ${JWT_SECRET}
+      NODE_SERVER_HOST: ${NODE_SERVER_HOST}
+      NODE_SERVER_PORT: ${NODE_SERVER_PORT}
+      REACT_SERVER_HOST: ${REACT_SERVER_HOST}
+      REACT_SERVER_PORT: ${REACT_SERVER_PORT}
+    ports:
+        - ${NODE_SERVER_PORT}:${NODE_SERVER_PORT}
+    depends_on:
+      - mysqldb1
+      - mysqldb2
+      - mysqldb3
+      - mysqldb4
+      - redis
+
+  client:
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
+    image: rce-client
+    container_name: rce-client
+    command: npm start
+    environment:
+      REACT_APP_NODE_SERVER_HOST: ${REACT_APP_NODE_SERVER_HOST}
+      REACT_APP_NODE_SERVER_PORT: ${REACT_APP_NODE_SERVER_PORT}
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - rce
+    ports:
+      - ${REACT_SERVER_PORT}:${REACT_SERVER_PORT}
+
+  mysqldb1:
+    image: mysql:5.7.29
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_HOST: ${MYSQL_HOST1}
+
+  mysqldb2:
+    image: mysql:5.7.29
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_HOST: ${MYSQL_HOST2}
+
+  mysqldb3:
+    image: mysql:5.7.29
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_HOST: ${MYSQL_HOST3}
+
+  mysqldb4:
+    image: mysql:5.7.29
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_HOST: ${MYSQL_HOST4}
+
+  redis:
+    image: redis:alpine
+    container_name: ${REDIS_HOST}
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    expose:
+      - ${REDIS_PORT}

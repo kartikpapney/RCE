@@ -22,7 +22,10 @@ export default async function(req, res, next) {
         if(createConnection && freeHosts.length != 0) {
             const host = freeHosts.shift();
             session = await generateTokenFromHost(host);
-            await res.cookie(COOKIE_NAME, session);
+            await res.cookie(COOKIE_NAME, session, {
+                sameSite: "none",
+                secure: false
+            });
             req.db = hostToConnection(host)
         }
 

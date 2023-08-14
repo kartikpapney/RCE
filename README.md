@@ -5,18 +5,18 @@ Welcome to the SQL Remote Code Execution Web Application repository! This projec
 
 
 ## Hosted Link
- - [Hosted Link](https://rce-fe.onrender.com/) Please note that the Application is hosted on free available shared servers. You might face downtime issues on the hosted link. You can run the system locally on Docker container for not facing such issues.
+ - [Hosted Link](https://main--symphonious-fudge-ba46bd.netlify.app/) Please note that the Application is hosted on free available shared servers. You might face downtime issues on the hosted link. You can run the system locally on Docker container for not facing such issues.
 
 
 ## Features
 
 Frontend is built using React and Ant Design, offering a clean and intuitive interface for users to input their SQL queries. The interface accepts the input from the user and runs the sql query against that input. The result then shows up in a table 
 
-![User Interface](https://github.com/kartikpapney/RCE/blob/main/screenshots/ui.png?raw=true)
+![User Interface](./screenshots/ui.png)
 
 The backend, constructed with Node.js, is augmented by Redis to efficiently manage user sessions. Redis ensures individual user isolation by assigning distinct databases to each user. Inactivity is addressed through a scheduler that automatically disengages user databases after a 10-minute period, freeing up resources for new users. Currently, the system accommodates up to 4 concurrent users. Moreover, the system's architecture is readily scalable horizontally, enabling seamless expansion to handle higher loads. The diagram below provides a comprehensive visualization of the system's design:
 
-![System Design](https://github.com/kartikpapney/RCE/blob/main/screenshots/design.png?raw=true)
+![System Design](./screenshots/design.png)
 
 
 
@@ -39,7 +39,7 @@ The backend, constructed with Node.js, is augmented by Redis to efficiently mana
 
 **Tools:** Docker
 
-**Cloud** Render (Frontend & Backend), Railway (MySQL, Redis), Github
+**Cloud** Render (Backend), Railway (MySQL, Redis), Netlify (Frontend) Github
 
 
 ## Clone Project

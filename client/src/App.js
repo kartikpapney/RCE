@@ -46,13 +46,13 @@ function App() {
       setColumns(cols);
       setData(response.res)
     } catch (error) {
-      console.log(error)
+      console.log({error})
       setColumns([{
         title: 'Response',
         dataIndex: 'Response'
       }]);
       setData([
-        {'Response': toString(error?.response?.data?.res || 'Unexpected Error')}
+        {'Response': error}
       ])
     }
   };

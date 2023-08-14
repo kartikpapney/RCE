@@ -4,6 +4,9 @@
 Welcome to the SQL Remote Code Execution Web Application repository! This project is a powerful yet user-friendly web-based application designed to streamline the process of executing SQL queries and visualizing their results. It can be used by a developer, a data analyst, or a database administrator, our application provides an intuitive interface for interacting with databases and retrieving valuable insights from your data.
 
 
+## Youtube Video Url
+Please visit the url [Video URL](https://youtu.be/PzU25yj1k44) for complete understanding regarding the solution approach. Feel free to connect for any query.
+
 ## Hosted Link
  - [Hosted Link](https://main--symphonious-fudge-ba46bd.netlify.app/) Please note that the Application is hosted on free available shared servers. You might face downtime issues on the hosted link. You can run the system locally on Docker container for not facing such issues.
 

@@ -43,6 +43,7 @@ function App() {
         })
       }
       console.log(response);
+      console.log(response);
       setColumns(cols);
       setData(response.res)
     } catch (error) {

@@ -8,7 +8,7 @@ export default async function(req, res) {
             connection.query(query, function (error, results, fields) {
                 if (error) {
                     console.log(error.sqlMessage);
-                    res.status(404).send({res: error.sqlMessage})
+                    res.status(422).send({res: error.sqlMessage})
                 } else {
                     res.status(200).send({res: results})
                 }

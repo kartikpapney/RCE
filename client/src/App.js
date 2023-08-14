@@ -34,6 +34,7 @@ function App() {
       if(typeof list === 'object') {
         if(!Array.isArray(list)) {
           firstObject = list;
+          list = [list];
         } else {
           firstObject = list[0];
         }
@@ -41,6 +42,7 @@ function App() {
         firstObject = {
           'Output': list
         }
+        list = [firstObject];
       }
       const cols = [];
       for(const key in firstObject) {
@@ -50,7 +52,7 @@ function App() {
         })
       }
       setColumns(cols);
-      setData(response.res)
+      setData(list)
     } catch (error) {
       setColumns([{
         title: 'Output',

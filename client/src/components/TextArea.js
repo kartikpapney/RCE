@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from 'antd';
+import Input from 'antd/es/input/Input';
 
 const { TextArea } = Input;
 

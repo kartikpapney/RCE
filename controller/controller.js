@@ -7,7 +7,8 @@ export default async function(req, res) {
             const connection = req.db;
             connection.query(query, function (error, results, fields) {
                 if (error) {
-                    res.status(404).send({res: 'Error while Executing'})
+                    console.log(error.sqlMessage);
+                    res.status(404).send({res: error.sqlMessage})
                 } else {
                     res.status(200).send({res: results})
                 }

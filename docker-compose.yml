@@ -82,6 +82,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD_1}
       MYSQL_PORT: ${MYSQL_PORT_1}
       MYSQL_HOST: ${MYSQL_HOST_1}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   mysqldb2:
     image: mysql:5.7.29
@@ -91,6 +92,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD_2}
       MYSQL_PORT: ${MYSQL_PORT_2}
       MYSQL_HOST: ${MYSQL_HOST_2}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   mysqldb3:
     image: mysql:5.7.29
@@ -100,6 +102,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD_3}
       MYSQL_PORT: ${MYSQL_PORT_3}
       MYSQL_HOST: ${MYSQL_HOST_3}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   mysqldb4:
     image: mysql:5.7.29
@@ -109,6 +112,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD_4}
       MYSQL_PORT: ${MYSQL_PORT_4}
       MYSQL_HOST: ${MYSQL_HOST_4}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   redis:
     image: redis:alpine

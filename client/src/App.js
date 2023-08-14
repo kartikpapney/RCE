@@ -52,7 +52,7 @@ function App() {
         dataIndex: 'Response'
       }]);
       setData([
-        {'Response': toString(error?.data?.res || 'Unexpected Error')}
+        {'Response': toString(error?.response?.data?.res || 'Unexpected Error')}
       ])
     }
   };
@@ -70,7 +70,7 @@ function App() {
         </div>
         <div className="right-section">
           <div className="result">
-            <Table columns={columns} dataSource={data} scroll={{y: 10}}/>
+            <Table columns={columns} dataSource={data} scroll={{y: 500}}/>
         </div>
         </div>
       </div >

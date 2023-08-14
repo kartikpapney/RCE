@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import Table from 'antd/es/table/Table'
 import axios from 'axios';
 import TextArea from './components/TextArea';
-import Typography from 'antd/es/typography';
 import './App.css';
-const { Title } = Typography;
 
 
 function App() {

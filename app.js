@@ -22,6 +22,7 @@ app.use(cors({
   origin:  [
     process.env.REACT_SERVER_HOST,
   ],
+  "Access-Control-Allow-Origin": process.env.REACT_SERVER_HOST,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true

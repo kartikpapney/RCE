@@ -47,16 +47,6 @@ job.start();
 var notifyServer = server.listen(app.get('port'),
   process.env.NODE_SERVER_IP || '127.0.0.1',
   function() {
-    console.log({
-      origin:  [
-        process.env.REACT_SERVER_HOST,
-      ],
-      "Access-Control-Allow-Origin": process.env.REACT_SERVER_HOST,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
-      credentials: true
-    })
-    console.log(process.env.REACT_SERVER_HOST);
     debug('server listening on address ' + notifyServer.address().address + ':' + notifyServer.address().port)
     debug('server listening on port ' + notifyServer.address().port)
   })

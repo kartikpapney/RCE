@@ -12,36 +12,34 @@ const generateTokenFromHost = async function(host) {
     }, process.env.JWT_SECRET);      
 }
 
-const verifyTokenGetHost = async function(token) {
-    const data = jwt.verify(token, process.env.JWT_SECRET);
-    if(data) {
-        return data.host;
-    } else {
-        return null;
-    }
-}
-
 const sessionIsInActive = function(timestamp) {
     timestamp = parseInt(timestamp);
-    return timestamp+CONNECTION_EXPIRATION < Date.now();
+    return timestamp+parseInt(CONNECTION_EXPIRATION) < Date.now();
 }
 
 const freeConnection = async function() {
     try {
         const freeHosts = JSON.parse(await redis.get(FREE_HOSTS));
-        let sessions = JSON.parse(await redis.get(SESSIONS))||[];
-        
+        let sessions = JSON.parse(await redis.get(SESSIONS)) || [];
         sessions = (await Promise.all(sessions.map(async(session) => {
-            const timestamp = await redis.get(session);
-            if(sessionIsInActive(timestamp)) {
-                const host = await verifyTokenGetHost(session);
-                freeHosts.push(host);
+            try {
+                const timestamp = session.timestamp;
+                if (sessionIsInActive(timestamp)) {
+                    const host = session.host;
+                    freeHosts.push(host);
+                    return {
+                        include: false,
+                        value: session
+                    };
+                } else {
+                    return {
+                        include: true,
+                        value: session
+                    };
+                }
+            } catch (innerError) {
+                console.error("Error in session processing:", innerError);
                 return {
-                    include: false,
-                    value: session
-                };
-            } else {
-                return  {
                     include: true,
                     value: session
                 };
@@ -50,16 +48,14 @@ const freeConnection = async function() {
         
         await redis.set(FREE_HOSTS, JSON.stringify(freeHosts));
         await redis.set(SESSIONS, JSON.stringify(sessions));
-    } catch(e) {
-        console.log({e})
+    } catch (e) {
+        console.error("Top-level error:", e);
     }
-    
 }
 
 
 export {
     generateTokenFromHost,
-    verifyTokenGetHost,
     sessionIsInActive,
     freeConnection
 }

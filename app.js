@@ -34,7 +34,7 @@ app.use((req, res) => {
 });
 
 var job = new CronJob(
-    '*/1 * * * *',
+    `*/${process.env.CRON_RUN_EVERY} * * * *`,
     freeConnection,
     null,
     true,

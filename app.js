@@ -29,7 +29,9 @@ app.use(cors({
 
 app.set('port', process.env.NODE_SERVER_PORT || 5000);
 app.use('/', router);
-
+app.use((req, res) => {
+  res.status(404).send('Route not found');
+});
 
 var job = new CronJob(
     '*/1 * * * *',

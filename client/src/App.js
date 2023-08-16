@@ -24,7 +24,7 @@ function App() {
   const executeQuery = async () => {
     setIsLoading(true);
     try {
-      const BASE_URL = `${process.env.REACT_APP_NODE_SERVER_HOST}/`
+      const BASE_URL = `https://backend-nm10.onrender.com`
       const instance = axios.create({
           withCredentials: true,
           baseURL: BASE_URL,

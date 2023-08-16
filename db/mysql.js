@@ -1,6 +1,6 @@
 import * as mysql from 'mysql2'
 import redis from './redis.js';
-import {FREE_HOSTS} from '../constant.js';
+import {FREE_HOSTS, SESSIONS} from '../constant.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -57,6 +57,7 @@ const hostToConnectionMapping = freeHosts.map((value, idx) => {
 }).reduce((acc, cur) => ({ ...acc, [cur.host]: cur.connection }), {})
 
 await redis.set(FREE_HOSTS, JSON.stringify(freeHosts));
+await redis.set(SESSIONS, JSON.stringify([]));
 
 const hostToConnection = function(host) {
     return hostToConnectionMapping[host];

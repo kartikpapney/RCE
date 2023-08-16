@@ -73,7 +73,7 @@ function App() {
       {isLoading ? (
            <div className="progress-container">
               <div className="progress-bar">
-                <p>Loading...!! Currently we're using free cloud services. You might face a delay in the API response for the first time because our backend server restarts if it is inactive for 15 minutes</p>
+                <p>Loading...!! Currently we're using free cloud services. You might face a delay in the API response for the first time because our backend server restarts if it is inactive for 15 minutes. Delay Can be for a minute or so. Please be patient</p>
               </div>
             </div>
         ) : (

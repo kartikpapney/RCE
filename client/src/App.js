@@ -16,11 +16,13 @@ function App() {
   const [data, setData] = useState([
     {'Output': "You'll get your response here!!"}
   ])
+  const [isLoading, setIsLoading] = useState(false);
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   };
 
   const executeQuery = async () => {
+    setIsLoading(true);
     try {
       const BASE_URL = `${process.env.REACT_APP_NODE_SERVER_HOST}/`
       const instance = axios.create({
@@ -62,22 +64,32 @@ function App() {
         {'Output': error?.response?.data?.res || 'Unexpected Error!!'}
       ])
     }
+    setIsLoading(false);
   };
 
 
   return (
     <div className="App">
-      <div className="two-column-layout">
-        <div className="left-section">
-          
-          <TextArea value={query} onChange={handleQueryChange} placeholder="Your SQL Query ..."></TextArea>
-          <button onClick={executeQuery}>Run</button>
-        </div>
-        <div className="right-section">
-            <Table columns={columns} dataSource={data} scroll={{y: 500, x: data.length*10}} />
-        </div>
-      </div >
-    </div>
+      {isLoading ? (
+           <div className="progress-container">
+              <div className="progress-bar">
+                <p>Loading...!! Currently we're using free cloud services. You might face a delay in the API response for the first time because our backend server restarts if it is inactive for 15 minutes</p>
+              </div>
+            </div>
+        ) : (
+          <div className="two-column-layout">
+            <div className="left-section">
+              <TextArea value={query} onChange={handleQueryChange} placeholder="Your SQL Query ..." />
+              <button onClick={executeQuery}>Run</button>
+            </div>
+            <div className="right-section">
+              
+              <Table columns={columns} dataSource={data} scroll={{ y: 500, x: data.length * 10 }} />
+            </div>
+          </div>
+        )}
+    
+  </div>
   );
 }
 

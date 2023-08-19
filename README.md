@@ -21,7 +21,9 @@ The backend, constructed with Node.js, is augmented by Redis to efficiently mana
 
 ![System Design](./screenshots/design.png)
 
+Below is the loadtime of the application. Since it's a not so UI intensive but if it was we can make the UI loads in less amount of time using Code Spliting/ Lazy Loading in react. I've saperated the codes in different components for the current scenario so to make application more performant.
 
+![System Design](./screenshots/loadTime.png)
 
 
 

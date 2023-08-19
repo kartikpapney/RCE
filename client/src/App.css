@@ -5,23 +5,30 @@
 }
 
 .two-column-layout {
+  justify-content: space-between;
+  width: 100%;
   display: flex;
-  width: auto; 
-  height: 19;
+  flex-wrap: wrap;
   padding: 10px;
 }
 
 .left-section {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
+  padding-right: 0;
+  margin-right: 20px;
+  min-width: 400px;
   height: 100%;
 }
 
 .right-section {
   flex: 1;
   padding: 10px;
-  overflow-x: scroll;
+  padding-right: 0;
+  margin-right: 30px;
+  min-width: 400px;
   height: 100%;
+  overflow-x: scroll;
 }
 
 button {

@@ -1,7 +1,13 @@
 .App {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto; 
 }
 
 .two-column-layout {
@@ -17,7 +23,7 @@
   padding: 10px;
   padding-right: 0;
   margin-right: 20px;
-  min-width: 400px;
+  min-width: 300px;
   height: 100%;
 }
 
@@ -26,7 +32,7 @@
   padding: 10px;
   padding-right: 0;
   margin-right: 30px;
-  min-width: 400px;
+  min-width: 300px;
   height: 100%;
   overflow-x: scroll;
 }

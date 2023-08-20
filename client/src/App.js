@@ -57,7 +57,10 @@ function App() {
               <button onClick={executeQuery}>Run</button>
             </div>
             <div className="right-section">
-              <Table columns={columns} dataSource={data} scroll={{ y: 500, x: data.length * 10 }} />
+              <Table columns={columns} 
+              dataSource={data} 
+              scroll={{ y: 500, x: data.length * 10 }}
+              rowKey={(row, idx) => idx} />
             </div>
           </div>
         )}
